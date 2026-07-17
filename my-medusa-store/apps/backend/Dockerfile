@@ -1,9 +1,7 @@
 FROM node:20-alpine
 
-# Force IPv4 and set npm registry (bypasses network issues)
+# Force IPv4 for all Node.js network calls (this also affects npm)
 ENV NODE_OPTIONS=--dns-result-order=ipv4first
-RUN npm config set registry https://registry.npmjs.org/ \
- && npm config set prefer-ip-version 4
 
 WORKDIR /app
 
@@ -16,7 +14,7 @@ RUN npm install --legacy-peer-deps --fetch-timeout=120000
 # Copy the rest of the application
 COPY . .
 
-# Build the app (if your package.json has a "build" script; if not, remove this line)
+# Build the app (remove if no "build" script)
 RUN npm run build || true
 
 EXPOSE 9000
