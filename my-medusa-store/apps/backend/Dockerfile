@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-# Force IPv4 for all Node.js network calls (this also affects npm)
+# Force IPv4 for all Node.js network calls
 ENV NODE_OPTIONS=--dns-result-order=ipv4first
 
 WORKDIR /app
@@ -19,4 +19,4 @@ RUN npm run build || true
 
 EXPOSE 9000
 
-CMD ["npx", "medusa", "start"]
+CMD sh -c "npx medusa db:migrate && npx medusa start"
