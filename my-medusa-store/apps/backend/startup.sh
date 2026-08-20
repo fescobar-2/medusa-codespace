@@ -20,4 +20,5 @@ else
 fi
 
 echo "Starting Medusa..."
+export PORT=${PORT:-9000}
 npx medusa start
