@@ -3,10 +3,6 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
-  server: {
-    port: 10000,
-    host: '0.0.0.0',
-  },
   admin: {
     disable: true,
   },
