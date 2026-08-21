@@ -2,14 +2,14 @@ name: Build and Push Backend Image
 
 on:
   push:
-    branches: [main]       # trigger on pushes to main
+    branches: [main]
     paths:
-      - 'my-medusa-store/apps/backend/**'   # only when backend code changes
-  workflow_dispatch:      # allows manual trigger
+      - 'my-medusa-store/apps/backend/**'
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/fescobar-2/medusa-codespace-backend:latest   # e.g., user/repo-backend
+  IMAGE_NAME: ${{ github.repository }}-backend
 
 jobs:
   build:
@@ -32,8 +32,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: my-medusa-store/apps/backend   # path to Dockerfile
+          context: my-medusa-store/apps/backend
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          #cache-from: type=gha
-          #cache-to: type=gha,mode=max
