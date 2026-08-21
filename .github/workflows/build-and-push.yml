@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: medusa-codespace   # e.g., user/repo-backend
+  IMAGE_NAME: ghcr.io/fescobar-2/medusa-codespace-backend:latest   # e.g., user/repo-backend
 
 jobs:
   build:
