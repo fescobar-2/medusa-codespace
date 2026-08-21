@@ -7,7 +7,7 @@ app = 'fede-medusa-back'
 primary_region = 'iad'
 
 [build]
-  image = "ghcr.io/fescobar-2/medusa-codespace:latest"
+  image = "ghcr.io/fescobar-2/medusa-codespace-backend:latest"
 
 [http_service]
   internal_port = 9000
