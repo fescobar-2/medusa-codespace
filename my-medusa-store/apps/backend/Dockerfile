@@ -9,11 +9,11 @@ RUN npm install --legacy-peer-deps --fetch-timeout=120000
 
 COPY . .
 
-# Build the admin panel (uses @medusajs/admin-bundler now installed)
-RUN npm run build
+# Build admin panel and ensure output goes to the right place
+RUN npx medusa build
 
-# Verify the build output exists
-RUN test -f /app/.medusa/server/public/index.html && echo "Admin build successful" || (echo "Admin build failed - searching..." && find /app -name "index.html" 2>/dev/null)
+# Verify the admin build
+RUN test -f /app/.medusa/server/public/admin/index.html && echo "Admin build OK" || echo "Admin build missing"
 
 COPY startup.sh /app/startup.sh
 RUN chmod +x /app/startup.sh
