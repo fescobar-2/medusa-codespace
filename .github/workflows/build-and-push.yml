@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: medusa-codespace-backend   # e.g., user/repo-backend
+  IMAGE_NAME: medusa-codespace   # e.g., user/repo-backend
 
 jobs:
   build:
